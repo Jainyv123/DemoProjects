@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block body %}
+<style>
+    .movie-details-container {
+        display: flex;
+        align-items: center;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        background-color: #f7f7f7;
+        margin: 20px auto;
+    }
+
+    .movie-image {
+        width: 300px;
+        height: 400px;
+        object-fit: cover;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .movie-details {
+        flex: 1;
+        padding-left: 20px;
+    }
+
+    .movie-title {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .movie-description {
+        font-size: 16px;
+        margin-bottom: 15px;
+        color: #555;
+    }
+
+    .movie-year {
+        font-size: 14px;
+        color: #777;
+    }
+
+    .btn-update {
+        margin-top: 15px;
+    }
+
+    .btn-delete {
+        margin-top: 5px;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 movie-details-container">
+            <img src="{{movie.img.url}}" class="movie-image">
+            <div class="movie-details">
+                <h2 class="movie-title">{{movie.name}}</h2>
+                <p class="movie-description">{{movie.desc}}</p>
+                <p class="movie-year">Year: {{movie.year}}</p>
+                <a class="btn btn-warning btn-update" href="{% url 'movieapp:update' movie.id %}">Update</a>
+                <a class="btn btn-danger btn-delete" href="{% url 'movieapp:delete' movie.id %}">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
